@@ -1,3 +1,7 @@
+// Name: Ulises Cantor
+// Teacher: Mr. Menchukov
+// Period: 2
+// Program: This file should give proper instructions for how pieces move and work
 
 import java.awt.Graphics;
 import java.awt.Image;

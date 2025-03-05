@@ -1,4 +1,7 @@
-
+// Name: Ulises Cantor
+// Teacher: Mr. Menchukov
+// Period: 2
+// Program: Creates a chess board and allows the user to interact with it
 
 import java.awt.Color;
 import java.awt.Dimension;
