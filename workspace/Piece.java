@@ -49,9 +49,73 @@ public class Piece {
     // TO BE IMPLEMENTED!
     //return a list of every square that is "controlled" by this piece. A square is controlled
     //if the piece capture into it legally.
-    public ArrayList<Square> getControlledSquares(Square[][] board, Square start) {
-     return null;
+    public ArrayList<Square> getControlledSquares(Square[][] b, Square start) {
+      ArrayList<Square> controlledSquares = new ArrayList<Square>();
+      int sRow = start.getRow();
+      int tempRow = sRow;
+      int sCol = start.getCol();
+      int tempCol = sCol;
+      boolean available = true;
+      while (available == true && (tempRow + 1 < 8) && (tempCol + 1 < 8)){
+        tempRow++;
+        tempCol++;
+        if (b[tempRow][tempCol].isOccupied()==false){
+          controlledSquares.add(b[tempRow][tempCol]);
+        }
+        else {
+            controlledSquares.add(b[tempRow][tempCol]);
+          
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow - 1 >= 0) && (tempCol + 1 < 8)){
+        tempRow--;
+        tempCol++;
+        if (b[tempRow][tempCol].isOccupied()==false){
+          controlledSquares.add(b[tempRow][tempCol]);
+        }
+        else {
+            controlledSquares.add(b[tempRow][tempCol]);
+          
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow - 1 >= 0) && (tempCol - 1 >= 0)){
+        tempRow--;
+        tempCol--;
+        if (b[tempRow][tempCol].isOccupied()==false){
+          controlledSquares.add(b[tempRow][tempCol]);
+        }
+        else {
+            controlledSquares.add(b[tempRow][tempCol]);
+          
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow + 1 < 8) && (tempCol - 1 >= 0)){
+        tempRow++;
+        tempCol--;
+        if (b[tempRow][tempCol].isOccupied()==false){
+          controlledSquares.add(b[tempRow][tempCol]);
+        }
+        else {
+            controlledSquares.add(b[tempRow][tempCol]);
+          
+          available = false;
+        }
+      }
+    	return controlledSquares;
     }
+    
     
 
     //TO BE IMPLEMENTED!
@@ -60,7 +124,80 @@ public class Piece {
     //returns an arraylist of squares which are legal to move to
     //please note that your piece must have some sort of logic. Just being able to move to every square on the board is not
     //going to score any points.
+
+
+    // Precondition: Piece selected is a bishop
+    // Postcondition: The bishop moves diagonally, staying on the same colored square throughout the entire game. 
+    // It has infinite range until the end of the board or until there is a piece in the way (if it is an opposite color piece, it can capture it)
+    // and moves in all directions diagonal to it.
     public ArrayList<Square> getLegalMoves(Board b, Square start){
-    	return null;
+      ArrayList<Square> legalMoves = new ArrayList<Square>();
+      int sRow = start.getRow();
+      int tempRow = sRow;
+      int sCol = start.getCol();
+      int tempCol = sCol;
+      boolean available = true;
+      while (available == true && (tempRow + 1 < 8) && (tempCol + 1 < 8)){
+        tempRow++;
+        tempCol++;
+        if (b.getSquareArray()[tempRow][tempCol].isOccupied()==false){
+          legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+        }
+        else {
+          if ((b.getSquareArray()[tempRow][tempCol].getOccupyingPiece().getColor()) != color){
+            legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+          }
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow - 1 >= 0) && (tempCol + 1 < 8)){
+        tempRow--;
+        tempCol++;
+        if (b.getSquareArray()[tempRow][tempCol].isOccupied()==false){
+          legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+        }
+        else {
+          if ((b.getSquareArray()[tempRow][tempCol].getOccupyingPiece().getColor()) != color){
+            legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+          }
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow - 1 >= 0) && (tempCol - 1 >= 0)){
+        tempRow--;
+        tempCol--;
+        if (b.getSquareArray()[tempRow][tempCol].isOccupied()==false){
+          legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+        }
+        else {
+          if ((b.getSquareArray()[tempRow][tempCol].getOccupyingPiece().getColor()) != color){
+            legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+          }
+          available = false;
+        }
+      }
+      tempRow = sRow;
+      tempCol = sCol;
+      available = true;
+      while (available == true && (tempRow + 1 < 8) && (tempCol - 1 >= 0)){
+        tempRow++;
+        tempCol--;
+        if (b.getSquareArray()[tempRow][tempCol].isOccupied()==false){
+          legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+        }
+        else {
+          if ((b.getSquareArray()[tempRow][tempCol].getOccupyingPiece().getColor()) != color){
+            legalMoves.add(b.getSquareArray()[tempRow][tempCol]);
+          }
+          available = false;
+        }
+      }
+    	return legalMoves;
     }
 }
