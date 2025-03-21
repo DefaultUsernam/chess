@@ -144,7 +144,18 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     }
 
 	public boolean isInCheck(boolean kingColor){
-		for()
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                Square sq = board[x][y];
+                if (sq.getOccupyingPiece() != null && sq.getOccupyingPiece().getColor()!=kingColor){
+                    for(Square control : sq.getOccupyingPiece().getControlledSquares(board, sq)){
+                        if(control.getOccupyingPiece()!=null && control.getOccupyingPiece() instanceof King){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
     
